@@ -1,0 +1,11 @@
+.well
+  h1 Albums
+
+= link_to t('.new', :default => t("helpers.links.new")), new_album_path, :class => 'btn btn-primary'
+
+.clearfix
+
+br/
+
+ul.thumbnails.albums
+  = render @albums

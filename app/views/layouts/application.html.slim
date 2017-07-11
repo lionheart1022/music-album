@@ -1,0 +1,39 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title= content_for?(:title) ? yield(:title) : "Alballery"
+    = csrf_meta_tags
+
+    /! Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "application", :media => "all"
+    = favicon_link_tag 'favicon.ico'
+
+  body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand href="#"Alballery
+          .container.nav-collapse
+            ul.nav
+              li= link_to 'Home', root_path
+              li= link_to 'Albums', albums_path
+            p.navbar-text.pull-right = session_links
+
+    .container
+      .content
+        .row = flash_messages
+        .row
+          .span12 = yield
+
+      footer
+        p &copy; Company 2012
+
+    = javascript_include_tag "application"
